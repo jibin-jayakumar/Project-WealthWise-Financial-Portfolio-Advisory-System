@@ -18,10 +18,34 @@ class UserRegistrationSerializer(serializers.Serializer):
         if User.objects.filter(username=value).exists():
             raise serializers.ValidationError("User already exists")
         return value
+    
+
+    def validate_first_name(self, value):
+        if len(value) > 100:
+             raise serializers.ValidationError("First name cannot exceed 100 characters")
+        if not re.match(r'^[A-Za-z\s\-]+$', value):
+             raise serializers.ValidationError("First name can only contain letters, spaces, and hyphens")
+        if len(value.strip()) < 2:
+            raise serializers.ValidationError("First name must be at least 2 characters")
+        return value
+
+    def validate_last_name(self, value):
+        if len(value) > 100:
+            raise serializers.ValidationError("Last name cannot exceed 100 characters")
+        if not re.match(r'^[A-Za-z\s\-]+$', value):
+            raise serializers.ValidationError("Last name can only contain letters, spaces, and hyphens")
+        if len(value.strip()) < 2:
+            raise serializers.ValidationError("Last name must be at least 2 characters")
+        return value
+
+
+
 
     def validate_age(self, value):
         if value < 18:
             raise serializers.ValidationError("User must be above 18 years old")
+        if value > 100:
+            raise serializers.ValidationError("Age must be between 18 and 100")
         return value
 
     def validate_email(self, value):

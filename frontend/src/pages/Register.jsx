@@ -28,8 +28,26 @@ function Register(){
             const endpoint = form.role === 'advisor' ? 'register/advisor/' : 'register/investor/';
             await API.post(endpoint, dataToSend);
             navigate('/login');
-        }catch{
+        }catch(err){
             setError('Registration failed');
+            if (err.response && err.response.data) {
+                // Handle different error formats
+                if (typeof err.response.data === 'object') {
+                    // Get first error message from Django
+                    const firstError = Object.values(err.response.data)[0];
+                    if (Array.isArray(firstError)) {
+                        setError(firstError[0]);
+                    } else if (typeof firstError === 'string') {
+                        setError(firstError);
+                    } else {
+                        setError('Registration failed. Please check your inputs.');
+                    }
+                } else {
+                    setError(err.response.data);
+                }
+            } else {
+                setError('Network error. Please try again.');
+            }
         }
     };
 
