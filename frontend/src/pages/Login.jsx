@@ -15,8 +15,8 @@ function Login(){
          console.log('1. Login started for:', username);
 
         try{
-            localStorage.removeItem('token');
-            console.log('2. Token removed');
+            // localStorage.removeItem('token');
+            // console.log('2. Token removed');
 
             const res = await API.post('login/',{username, password});
             console.log('3. API response:', res.data);
