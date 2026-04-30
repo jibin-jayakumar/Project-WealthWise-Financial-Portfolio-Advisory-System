@@ -32,21 +32,21 @@ function Carousel() {
                     </div>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src="fina1.jpg.jpg" className="d-block w-100" alt="Smart Investing" />
+                            <img src="/static/fina1.jpg.jpg" className="d-block w-100" alt="Smart Investing" />
                             <div className="carousel-caption d-none d-md-block">
                                 <h5>Smart Investing</h5>
                                 <p>Track your portfolio with real-time updates</p>
                             </div>
                         </div>
                         <div className="carousel-item">
-                            <img src="fina2.jpg" className="d-block w-100" alt="Expert Advisors" />
+                            <img src="/static/fina2.jpg" className="d-block w-100" alt="Expert Advisors" />
                             <div className="carousel-caption d-none d-md-block">
                                 <h5>Expert Advisors</h5>
                                 <p>Get professional guidance for better returns</p>
                             </div>
                         </div>
                         <div className="carousel-item">
-                            <img src="fina3.jpg" className="d-block w-100" alt="Grow Your Wealth" />
+                            <img src="/static/fina3.jpg" className="d-block w-100" alt="Grow Your Wealth" />
                             <div className="carousel-caption d-none d-md-block">
                                 <h5>Grow Your Wealth</h5>
                                 <p>Analyze risk and make informed decisions</p>
