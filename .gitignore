@@ -3,3 +3,4 @@ veninv/
 node_modules/
 __pycache__/
 .env
+*.__pyc
