@@ -74,7 +74,6 @@ function Dashboard() {
                 <p className="p2" style={{ marginLeft: '12px', fontStyle: 'italic' }}>Professional advice, better returns</p>
             </div>
 
-
 <nav className="navbar navbar-expand-lg dashboard-navbar">
     <div className="container-fluid">
         <span className="navbar-brand">Portfolio Overview</span>
