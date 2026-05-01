@@ -74,48 +74,59 @@ function Dashboard() {
                 <p className="p2" style={{ marginLeft: '12px', fontStyle: 'italic' }}>Professional advice, better returns</p>
             </div>
 
-            <nav className="navbar navbar-expand-lg dashboard-navbar">
 
-                <div className="container-fluid">
-                    <span className="navbar-brand">Portfolio Overview</span>
+<nav className="navbar navbar-expand-lg dashboard-navbar">
+    <div className="container-fluid">
+        <span className="navbar-brand">Portfolio Overview</span>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboardNavbar">
+            <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="dashboardNavbar">
+            <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
+                    <a className="nav-link" onClick={() => navigate('/')} style={{ cursor: 'pointer', fontWeight: 'bolder' }}>Home</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" onClick={() => navigate('/profile')} style={{ cursor: 'pointer' }}>My Profile</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" onClick={() => navigate('/add-investment')} style={{ cursor: 'pointer' }}>Add Investment</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" onClick={simulateMarket} style={{ cursor: 'pointer' }}>Simulate Market</a>
+                </li>
 
-                    {/* Hamburger button - add this */}
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboardNavbar">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+                {user_type === 'investor' && (
+                    <>
+                        <li className="nav-item">
+                            <a className="nav-link" onClick={() => navigate('/advisors')} style={{ cursor: 'pointer' }}>Find Advisors</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" onClick={() => navigate('/recommendations')} style={{ cursor: 'pointer' }}>Recommendations</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" onClick={logout} style={{ cursor: 'pointer' }}>Logout</a>
+                        </li>
+                    </>
+                )}
 
-                    {/* Collapsible wrapper - add this */}
-                    <div className="collapse navbar-collapse" id="dashboardNavbar">
-                        <div className="navbar-nav ms-auto">
-                            <button style={{ fontWeight: 'bolder' }} className="nav-link btn btn-link text-white" onClick={() => navigate('/')}>Home</button>
-                            <button className="nav-link btn btn-link text-white" onClick={() => navigate('/profile')}>My Profile</button>
-                            <button className="nav-link btn btn-link text-white" onClick={() => navigate('/add-investment')}>Add Investment</button>
-                            <button className="nav-link btn btn-link text-white" onClick={simulateMarket}>Simulate Market</button>
-
-                            {user_type === 'investor' && (
-                                <>
-                                    <button className="nav-link btn btn-link text-white" onClick={() => navigate('/advisors')}>Find Advisors</button>
-                                    <button className="nav-link btn btn-link text-white" onClick={() => navigate('/recommendations')}>Recommendations</button>
-                                    <button className="nav-link btn btn-link text-white" onClick={logout}>Logout</button>
-                                </>
-                            )}
-                            {user_type === 'advisor' && (
-                                <button className="nav-link btn btn-link text-white" onClick={() => navigate('/recommendations')}>Give Recommendations</button>
-                            )}
-
-                            {user_type === 'advisor' && (
-                                <>
-                                    <button className="nav-link btn btn-link text-white" onClick={() => navigate('/clients')}>View My Clients</button>
-                                    <button className="nav-link btn btn-link text-white" onClick={logout}>Logout</button>
-                                </>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-
-
+                {user_type === 'advisor' && (
+                    <>
+                        <li className="nav-item">
+                            <a className="nav-link" onClick={() => navigate('/recommendations')} style={{ cursor: 'pointer' }}>Give Recommendations</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" onClick={() => navigate('/clients')} style={{ cursor: 'pointer' }}>View My Clients</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" onClick={logout} style={{ cursor: 'pointer' }}>Logout</a>
+                        </li>
+                    </>
+                )}
+            </ul>
+        </div>
+    </div>
+</nav>
 
             {myAdvisor && (
                 <div style={{ backgroundColor: '#dde9ea', padding: '10px', margin: '10px 0', borderRadius: '5px' }}>
