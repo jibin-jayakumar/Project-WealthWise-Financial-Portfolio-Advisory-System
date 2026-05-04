@@ -27,7 +27,7 @@ function Login(){
             console.log('5. User type saved:', localStorage.getItem('user_type'));
 
             console.log('6. About to navigate to dashboard');
-            window.location.href = '/dashboard';
+            navigate('/dashboard');
             console.log('7. Navigate called');
         } catch (err){
             console.error('Login error:', err);
