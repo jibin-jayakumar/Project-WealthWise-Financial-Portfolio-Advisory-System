@@ -48,7 +48,7 @@ def login(request):
     password = request.data.get('password')
 
     user = authenticate(username=username, password=password)
-    
+    print(request.data,("debugg"))
     if user:
         token, _ = Token.objects.get_or_create(user=user)
 
