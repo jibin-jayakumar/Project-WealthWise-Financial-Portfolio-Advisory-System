@@ -8,6 +8,7 @@ from .serializers import InvestmentSerializer
 from .simulation import simulate_price_change
 
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_investment(request):
