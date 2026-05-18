@@ -6,9 +6,10 @@ from .serializers import UserRegistrationSerializer, AdvisorRegistrationSerializ
 from rest_framework.authtoken.models import Token 
 from rest_framework.permissions import AllowAny,IsAuthenticated
 from .models import Profile, AdvisorDetail 
-
+from django.views.decorators.csrf import csrf_exempt
 
 @api_view(['POST'])
+@csrf_exempt
 @permission_classes([AllowAny])
 def register_investor(request):
     serializer = UserRegistrationSerializer(data=request.data)
@@ -24,6 +25,7 @@ def register_investor(request):
 
 
 @api_view(['POST'])
+@csrf_exempt
 @permission_classes([AllowAny])
 def register_advisor(request):
     serializer = AdvisorRegistrationSerializer(data=request.data)
@@ -42,6 +44,7 @@ from rest_framework.authtoken.models import Token
 
 
 @api_view(['POST'])
+@csrf_exempt
 @permission_classes([AllowAny])
 def login(request):
     username = request.data.get('username')
