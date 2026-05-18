@@ -151,3 +151,9 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True 
+CORS_ALLOW_METHODS = [
+    'DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT'
+]
+CORS_ALLOW_HEADERS = [
+    'accept', 'authorization', 'content-type', 'origin', 'x-requested-with'
+]
