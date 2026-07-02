@@ -19,7 +19,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: 'https://project-wealthwise-financial-portfolio.onrender.com/api/',
+    baseURL: 'https://project-wealthwise-financial-portfolio.onrender.com',
 });
 
 API.interceptors.request.use((config) => {
