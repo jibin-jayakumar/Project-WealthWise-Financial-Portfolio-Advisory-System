@@ -82,22 +82,39 @@ WSGI_APPLICATION = 'main_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 if os.getenv('RENDER'):
-    # On Render - use PostgreSQL with internal host
+    # On Render - use PostgreSQL
     import dj_database_url
-    DATABASES = {
-        'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
-    }
+    
+    # ✅ Use external URL during build, internal after
+   
+    if os.getenv('MIGRATING') or os.getenv('BUILDING'):
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': 'wealthwise_db_jkuk',
+                'USER': 'wealthwise_db_jkuk_user',
+                'PASSWORD': 'OddXgTkhvWXICahrf1zBhDIOCkRfYQ1D',
+                'HOST': 'dpg-d9nm2kajnfac73bc9qug-a.oregon-postgres.render.com',
+                'PORT': '5432',
+                'OPTIONS': {
+                    'sslmode': 'require',
+                }
+            }
+        }
+    else:
+        # Internal URL (faster, private)
+        DATABASES = {
+            'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
+        }
 else:
-    # Local development - use SQLite (simpler)
+    # Local development - use SQLite
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
